@@ -1,5 +1,14 @@
 # Dashboard-Penjualan-2023
 
+## Dashboard Screenshot
+
+![Dashboard Screenshot](./Screenshot_Dashboard.png)
+
+## Dashboard Link
+
+🔗 [Klik di sini untuk melihat dashboard Looker Studio](https://lookerstudio.google.com/u/0/reporting/065591b7-b16c-479f-b587-84993105dc2c/page/dWsKF)
+
+---
 ## SQL Explanation
 
 Seluruh data diperoleh dari data warehouse dengan tabel utama `fact_sales` dan dimensi waktu `dim_time`. Beberapa query umum yang digunakan:
@@ -43,18 +52,6 @@ JOIN dim_time dt ON fs.order_date = dt.order_date
 WHERE dt.year = '2023';
 ```
 
-## Dashboard Link
-
-🔗 [Klik di sini untuk melihat dashboard Looker Studio](https://lookerstudio.google.com/your_dashboard_link)
-
-## Dashboard Screenshot
-
-![Dashboard Screenshot](./screenshot_dashboard.png)
-
-> *Pastikan file `screenshot_dashboard.png` berada di direktori yang sama dengan file `README.md`.*
-
----
-
 ## Penjelasan Dashboard
 
 | No | Goals | KPI | Perhitungan | Visualisasi | Target | Actual | Status |
@@ -66,7 +63,7 @@ WHERE dt.year = '2023';
 | 5 | Jumlah produk terjual ≥ 6.500 unit | Jumlah Produk Terjual | SUM(Quantity) WHERE year = '2023' | Gauge Chart | ≥ 6,500 | 5,466 | ❌ Tidak Tercapai |
 | 6 | Rerata diskon produk ≤ 25% | Rerata Diskon | AVG(Discount) WHERE Discount > 0 AND year = '2023' | Gauge Chart | ≤ 25% | 30.1% | ❌ Tidak Tercapai |
 | 7 | Rerata penjualan harian ≥ $1,100 | Rata-rata Penjualan Harian | SUM(Sales)/COUNT(DISTINCT Order_Date) | Score Card | ≥ $1,100 | $1,529 | ✅ Tercapai |
-| 8 | ≥ 65% produk terjual tanpa diskon | Rasio Produk Tanpa Diskon | COUNT(Discount = 0) / COUNT(Discount > 0) | Pie Chart | ≥ 65% | [Isi sesuai hasil dashboard] | [✅ / ❌] |
+| 8 | ≥ 65% produk terjual tanpa diskon | Rasio Produk Tanpa Diskon | COUNT(Discount = 0) / COUNT(Discount > 0) | Pie Chart | ≥ 65% | 48.2% | ❌ Tidak Tercapai |
 
 ---
 
@@ -94,11 +91,4 @@ WHERE dt.year = '2023';
 **✅ Tercapai** — Rata-rata penjualan harian sebesar $1,529 (melebihi target $1,100). Ini menunjukkan efisiensi operasional dalam 232 hari kerja.
 
 ### 8. Rasio Produk Tanpa Diskon
-**[Isi berdasarkan hasil dashboard]** — [Analisis sesuai presentase]. Disarankan menjaga proporsi produk tanpa diskon untuk efisiensi margin.
-
----
-
-## Catatan Tambahan
-
-- Gunakan dashboard untuk memantau performa tahunan dan menetapkan strategi berbasis data.
-- Pastikan input tahun dinamis agar KPI dapat dianalisis per tahun dengan filter Looker Studio.
+**❌ Tidak Tercapai** — Produk tanpa diskon hanya terjual sebanyak 48.2% dari total produk yang terjual. Disarankan menjaga proporsi produk tanpa diskon untuk efisiensi margin.
